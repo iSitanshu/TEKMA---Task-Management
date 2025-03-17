@@ -1,0 +1,50 @@
+.step-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    width: 240px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .step-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .center-card {
+    transform: scale(1.1); /* Slightly larger by default */
+  }
+  
+  .center-card:hover {
+    transform: scale(1.15); /* Increase size more on hover */
+  }
+  
+  .step-content img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .step-number {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .step-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: black;
+  }
+  
+  .step-description {
+    font-size: 14px;
+    color: black;
+  }
