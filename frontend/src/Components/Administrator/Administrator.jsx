@@ -9,7 +9,7 @@ const Administrator = ({ setIsAdministrator }) => {
     <div className='login-popup'>
       <form className="login-popup-container">
           <div className="login-popup-title">
-              <h2>{currState}</h2>
+              <h2>{currState}</h2>  
               <img onClick={() => setIsAdministrator(false)} src={assets.Cross} alt="Close" />
           </div>
           <div className="login-popup-inputs">
