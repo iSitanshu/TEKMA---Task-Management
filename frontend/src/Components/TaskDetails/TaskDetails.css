@@ -1,0 +1,45 @@
+
+.project-details{
+  display: flex;
+  flex-direction: row;
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+.project-left{
+  width: 50%;
+  text-align: center;
+  display: flex;
+  text-align: left;
+  flex-direction: column;
+}
+.project-container {
+  width: 50%;
+  display: flex; /* Use flexbox for layout */
+  justify-content: flex-end; /* Align items to the right */
+  align-items: center; /* Center items vertically */
+}
+
+.project-right {
+  background-color: black;
+  padding: 10px; /* Space inside the element */
+  margin-left: auto; /* Automatically adjust left margin */
+  margin-right: 0; /* Align to the right */
+  font-size: 16px; /* Font size */
+  color: white; /* Text color */
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+  display: inline-block; /* Allows margin and padding to work correctly */
+  cursor: pointer; /* Changes cursor to pointer on hover */
+  transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+.project-right:hover {
+  background-color: green;
+  color: white;
+}
+
+
+  

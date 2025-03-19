@@ -1,0 +1,11 @@
+.member{
+  display: flex;
+    display: flex;
+    min-height: 100vh;
+    background: #f4f4f9;
+    padding: 20px;
+  }
+
+  .member-right{
+    flex: 1;
+  }

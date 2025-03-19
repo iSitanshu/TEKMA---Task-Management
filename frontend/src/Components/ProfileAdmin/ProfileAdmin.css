@@ -1,0 +1,85 @@
+
+  /* Main Content */
+  .admin-main {
+    flex: 1;
+    padding: 20px 5px;
+  }
+  
+  /* Admin Info */
+  .admin-info {
+    display: flex;
+    flex-direction: column xl;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 30px 20px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  .admin-left{
+    border: 1px solid white;
+    border-radius: 5%;
+    text-align: left;
+    padding: 10px;
+    background-image: url('./profilebg.jpeg');
+    width: 65%;
+    height: 160px;
+  }
+  .admin-right{
+    border: 1px solid black;
+    /* background-image: url('./profilebg.jpeg'); */
+    width: 34%;
+    border-radius: 5%;
+    height: 160px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .admin-right-left{
+    width: 50%;
+    padding: 30px;
+    gap: 50%;
+  }
+  .admin-overall{
+    font-weight: bold;
+    color: grey;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .admin-no{
+    font-weight: bold;
+    align-items: center;
+    text-align: center;
+  }
+  .admin-task{
+    color: blue;
+    text-align: left;
+  }
+  .admin-right-right{
+    border: 5px solid green;
+    border-radius: 50%;
+    padding: 7%;
+  }
+  .admin-left h1{
+    padding: 10px;
+  }
+
+  .pink{
+    display: flex;
+    flex-direction: row;
+  }
+  .admin-info img {
+    border: 1px solid;
+    width: 80px;
+    max-height: 50%;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  .admin-info h2{
+    text-align: center;
+  }
+  .admin-info p{
+    font-size: 1.4rem;
+    text-align: left;
+  }
+  

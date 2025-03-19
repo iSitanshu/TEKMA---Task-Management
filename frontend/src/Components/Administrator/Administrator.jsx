@@ -1,33 +1,74 @@
-import React, { useState } from 'react'
-import { assets } from '../../assets/assets'
-import './Administrator.css'
+import React, { useState, useContext } from 'react';
+import { assets } from '../../assets/assets';
+import './Administrator.css';
+import UserContext from '../../context/UserContext';
+import { useNavigate } from 'react-router-dom';
 
-const Administrator = ({ setIsAdministrator }) => {
-  const [currState, setCurrState] = useState("Sign Up")
+const Administrator = ({ setIsAdministrator, setIsTeamMember }) => {
+  const navigate = useNavigate();
+  const { setUser } = useContext(UserContext);
+
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    password: "",
+    role: "",
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    console.log("Sending Data:", formData);
+
+    try {
+      const response = await fetch(`http://localhost:8000/api/v1/users/register`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setUser(data);  // ✅ Set user only when response is successful
+        alert("Registration successful!");
+        navigate("/login-as-administrator");
+        setIsAdministrator(false);
+      } else {
+        const errorData = await response.json();
+        console.error("Registration failed:", errorData);
+      }
+    } catch (error) {
+      console.error("Fetch failed:", error);
+    }
+  };
+
+  const handleInput = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   return (
-    <div className='login-popup'>
-      <form className="login-popup-container">
-          <div className="login-popup-title">
-              <h2>{currState}</h2>  
-              <img onClick={() => setIsAdministrator(false)} src={assets.Cross} alt="Close" />
-          </div>
-          <div className="login-popup-inputs">
-              {currState === "Login" ? null : <input type="text" placeholder='Your name' required />}
-              <input type="email" placeholder='Your Email' required />
-              <input type="password" placeholder='Enter the Password' required />
-          </div>
-          <button type="submit">{currState === "Sign Up" ? "Create account" : "Login"}</button>
-          <div className="login-popup-condition">
-              <input type="checkbox" required />
-              <p>By continuing, I agree to the terms of use & privacy policy.</p>
-          </div>
-          {currState === "Login" ? 
-          <p>Create a new account? <span onClick={() => setCurrState("Sign Up")}>Click here</span></p> : 
-          <p>Already have an account? <span onClick={() => setCurrState("Login")}>Login here</span></p>}
+    <div className="login-popup">
+      <form className="login-popup-container" onSubmit={handleSubmit}>
+        <div className="login-popup-title">
+          <h2>Sign Up</h2>
+          <img onClick={() => setIsAdministrator(false)} src={assets.Cross} alt="Close" className="cross-image" />
+        </div>
+        <div className="login-popup-inputs">
+          <input type="text" placeholder="Your name" name="username" value={formData.username} onChange={handleInput} required />
+          <input type="email" placeholder="Your Email" name="email" value={formData.email} onChange={handleInput} required />
+          <input type="password" placeholder="Enter the Password" name="password" value={formData.password} onChange={handleInput} required />
+          <label htmlFor="user-role">Choose your role:</label>
+          <select id="user-role" name="role" value={formData.role} onChange={handleInput} required>
+            <option value="">Select Role</option>
+            <option value="Host">Host</option>
+            <option value="Member">Member</option>
+          </select>
+        </div>
+        <button className="handleSubmit" type="submit">Sign Up</button>
+        <p>Already have an account? <span onClick={() => { setIsAdministrator(false); setIsTeamMember(true); }}>Click here</span></p>
       </form>
-  </div>
-  )
-}
+    </div>
+  );
+};
 
-export default Administrator
+export default Administrator;

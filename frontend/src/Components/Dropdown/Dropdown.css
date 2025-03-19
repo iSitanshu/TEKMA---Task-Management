@@ -1,0 +1,52 @@
+.dropdown {
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: white;
+    color: black;
+    transition: all 0.3s ease;
+}
+
+.dropdown p {
+    margin: 0; 
+    font-size: 18px;
+    color: black;
+    transition: color 0.3s ease, transform 0.2s ease; /* Smooth transition for text */
+}
+
+.dropdown-right {
+    display: flex;
+    gap: 30px;
+    margin-right: 20px;
+}
+
+/* Dropdown menu container */
+.dropdown-menu {
+    width: 100%;
+    margin-top: 15px;
+    padding: 16px;
+    border: 1px solid #ccc; 
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect: text turns white, background turns black */
+.dropdown:hover {
+    background-color: black;
+}
+
+.dropdown:hover p {
+    color: white;
+    cursor: pointer;
+}
+
+/* Right text increases slightly on hover */
+.dropdown-right p:hover {
+    transform: scale(1.1);
+}

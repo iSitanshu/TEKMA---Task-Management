@@ -1,25 +1,47 @@
-import React, { useState } from 'react'
-import { assets } from '../../assets/assets.js'
-import { Link } from 'react-router-dom'
-import './Navbar.css'
+import React, { useState, useContext, useEffect } from 'react';
+import { assets } from '../../assets/assets.js';
+import { Link, useLocation } from 'react-router-dom';
+import './Navbar.css';
+import UserContext from '../../context/UserContext';
 
-const Navbar = ({setShowLogin}) => {
-    const [menu, setMenu] = useState("Menu")
+const Navbar = ({ setShowLogin }) => {
+  const { user, setUser } = useContext(UserContext);
+  const location = useLocation();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    if (user) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, [user]);
+
+  const handleLogout = () => {
+    setUser(null); // Clear user context
+    setIsLoggedIn(false);
+  };
 
   return (
     <div className='Navbar'>
-        <div><Link to='/'><img src={assets.logo} alt="" className='logo'/></Link></div>
-        <div>
+      <div><Link to='/'><img src={assets.logo} alt="" className='logo'/></Link></div>
+      <div>
         <ul className="navbar-menu">
-          <Link to='/' onClick={()=>setMenu("Home")} className={menu==="Home"?"active":""}>Home</Link>
-          <a href="#explore-menu" onClick={()=>setMenu("Menu")} className={menu==="Menu"?"active":""}>Menu</a>
-          <a href="#guide" onClick={()=>setMenu("Guide")} className={menu==="Guide"?"active":""}>Guide</a>
-          <a href="#footer" onClick={()=>setMenu("Contact-us")} className={menu==="Contact-us"?"active":""}>Contact us</a>
+          <Link to='/'>Home</Link>
+          <a href="#explore-menu">Menu</a>
+          <a href="#guide">Guide</a>
+          <a href="#footer">Contact us</a>
         </ul>
-        </div>
-      <div><button onClick={() => setShowLogin(true)}>Sign Up</button></div>
+      </div>
+      <div>
+        {isLoggedIn ? (
+          <button onClick={handleLogout}>Logout</button>
+        ) : (
+          <button onClick={() => setShowLogin(true)}>Sign Up</button>
+        )}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

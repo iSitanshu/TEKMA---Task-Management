@@ -1,0 +1,44 @@
+.task-container {
+  display: flex;
+  justify-content: space-between; /* Ensures name is on the left, actions on the right */
+  align-items: center;
+  background: white;
+  color: black;
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin: 10px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: 0.3s;
+}
+
+.task-name {
+  font-size: 18px;
+  font-weight: 600;
+  text-align: left;
+  flex-grow: 1; /* Ensures it takes up available space */
+}
+
+.task-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Spacing between items */
+}
+
+.task-status {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Icon styling */
+.task-icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: transform 0.2s, opacity 0.3s;
+}
+
+.task-icon:hover {
+  transform: scale(1.2);
+  opacity: 0.8;
+}

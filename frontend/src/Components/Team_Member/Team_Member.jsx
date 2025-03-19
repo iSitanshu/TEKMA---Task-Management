@@ -1,33 +1,45 @@
-import React, { useState } from 'react'
-import './Team_Member.css'
-import { assets } from '../../assets/assets.js'
+import React, { useState } from 'react';
+import { assets } from '../../assets/assets';
+import './Team_Member.css';
 
-const Team_Member = ({ setIsTeamMember }) => {
-    const [currState, setCurrState] = useState("Sign Up");
+const Team_Member = ({ setIsAdministrator, setIsTeamMember }) => {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    role: "",
+  });
+
+  const handleInput = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const closePopup = () => {
+    setIsAdministrator(false);
+    setIsTeamMember(false);
+  };
 
   return (
     <div className='login-popup'>
-    <form className="login-popup-container">
+      <form className="login-popup-container">
         <div className="login-popup-title">
-            <h2>{currState}</h2>
-            <img onClick={() => setIsTeamMember(false)} src={assets.Cross} alt="Close" />
+          <h2>Log In</h2>  
+          <img onClick={closePopup} src={assets.Cross} alt="Close" className='cross-image' />
         </div>
         <div className="login-popup-inputs">
-            {currState === "Login" ? null : <input type="text" placeholder='Your name' required />}
-            <input type="email" placeholder='Your Email' required />
-            <input type="password" placeholder='Enter the Password' required />
+          <input type="email" placeholder='Your Email' name="email" value={formData.email} onChange={handleInput} required />
+          <input type="password" placeholder='Enter the Password' name="password" value={formData.password} onChange={handleInput} required />
+          <label htmlFor="user-role">Choose your role:</label>
+          <select id="user-role" name="role" value={formData.role} onChange={handleInput} required>
+            <option value="">Select Role</option>
+            <option value="host">Host</option>
+            <option value="member">Member</option>
+          </select>
         </div>
-        <button type="submit">{currState === "Sign Up" ? "Create account" : "Login"}</button>
-        <div className="login-popup-condition">
-            <input type="checkbox" required />
-            <p>By continuing, I agree to the terms of use & privacy policy.</p>
-        </div>
-        {currState === "Login" ? 
-        <p>Create a new account? <span onClick={() => setCurrState("Sign Up")}>Click here</span></p> : 
-        <p>Already have an account? <span onClick={() => setCurrState("Login")}>Login here</span></p>}
-    </form>
-</div>
-  )
-}
+        <button type="submit">Sign In</button>
+        <p>Don't have an account? <span onClick={() => { setIsAdministrator(true); setIsTeamMember(false); }}>Sign Up</span></p>
+      </form>
+    </div>
+  );
+};
 
-export default Team_Member
+export default Team_Member;
