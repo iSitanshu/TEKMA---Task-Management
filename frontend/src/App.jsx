@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import './App.css'
 import LoginPopup from './Components/LoginPopup/LoginPopup.jsx'
 import Navbar from './Components/Navbar/Navbar.jsx'
@@ -11,6 +11,9 @@ import LandingAdmin from './Components/LandingAdmin/LandingAdmin.jsx'
 import UserContextProvider from './context/UserContextProvider.jsx'
 import Member from './Components/Member/Member.jsx'
 import TaskOverview from './Components/TaskOverview/TaskOverview.jsx'
+import Temp from './Components/Temp.jsx'
+import {UserContext} from './context/UserContext.js'
+
 
 function App() {
   const [showLogin,setShowLogin ] = useState(false)
@@ -25,9 +28,10 @@ function App() {
       {isteamMember && <Team_Member setShowLogin={setShowLogin} setIsAdministrator={setIsAdministrator} setIsTeamMember={setIsTeamMember}/>}
       <div className='app'>
         <Navbar setShowLogin={setShowLogin}/>
+        {/* <Temp /> */}
         <Routes>
           <Route path='/' element={<Header />} />
-          <Route path='/login-as-administrator' element={<LandingAdmin />}/>
+          <Route path='/login-as-administrator/*' element={<LandingAdmin />}/>
           <Route path='/login-as-team-member' element={<Member />}/>
           <Route path="/task_detail" element={<TaskOverview />} />
         </Routes>

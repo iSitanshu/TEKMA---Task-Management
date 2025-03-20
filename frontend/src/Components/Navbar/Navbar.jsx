@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { assets } from '../../assets/assets.js';
 import { Link, useLocation } from 'react-router-dom';
 import './Navbar.css';
-import UserContext from '../../context/UserContext';
+import {UserContext} from '../../context/UserContext';
 
 const Navbar = ({ setShowLogin }) => {
   const { user, setUser } = useContext(UserContext);

@@ -1,15 +1,11 @@
-import React, { useContext } from "react";
-import { assets } from "../../assets/assets";
+import React from "react";
 import "./LandingAdmin.css";
-import UserContext from "../../context/UserContext";
 import Sidebar from "../Sidebar/Sidebar";
 import { Route, Routes } from "react-router-dom";
 import CurrentProjectStatus from "../CurrentProjectStatus/CurrentProjectStatus";
-import TaskOverview from "../TaskOverview/TaskOverview";
 
 
 const LandingAdmin = () => {
-  const { user } = useContext(UserContext);
 
   return (
     <>

@@ -1,33 +1,82 @@
-/* * Add Task */ */
- .add-task {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-  }
-  .add-task h2{
-    margin-top: 33px;
-    padding: 10px;
-  }
-  .add-task input, 
-  .add-task textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .add-task button {
-    margin-top: 10px;
-    padding: 10px 15px;
-    background: #28a745;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .add-task button:hover {
-    background: #218838;
-  }
+/* Add Task */
+.add-task {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.add-task h2 {
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+}
+
+/* Input & Textarea Styles */
+.add-task input, 
+.add-task textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border 0.3s ease-in-out;
+}
+
+.add-task input:focus,
+.add-task textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 5px rgba(37, 99, 235, 0.3);
+  outline: none;
+}
+
+/* Add & Remove Member Buttons */
+.member-container {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.member-input {
+  flex-grow: 1;
+  margin-right: 8px;
+  width: 60%;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.icon-button:hover {
+  transform: scale(1.01);
+}
+
+/* Green Add Button */
+.add-task button {
+  margin-top: 15px;
+  padding: 12px;
+  background: #28a745;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: background 0.3s ease-in-out;
+  width: 100%;
+}
+
+.add-task button:hover {
+  background: #218838;
+}

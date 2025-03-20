@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { assets } from '../../assets/assets';
 import './Administrator.css';
-import UserContext from '../../context/UserContext';
+import { UserContext } from '../../context/UserContext';
 import { useNavigate } from 'react-router-dom';
 
 const Administrator = ({ setIsAdministrator, setIsTeamMember }) => {
@@ -18,8 +18,6 @@ const Administrator = ({ setIsAdministrator, setIsTeamMember }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log("Sending Data:", formData);
-
     try {
       const response = await fetch(`http://localhost:8000/api/v1/users/register`, {
         method: "POST",
@@ -29,18 +27,22 @@ const Administrator = ({ setIsAdministrator, setIsTeamMember }) => {
 
       if (response.ok) {
         const data = await response.json();
-        setUser(data);  // ✅ Set user only when response is successful
+        setUser(data.data);  // ✅ Set user only when response is successful
         alert("Registration successful!");
         navigate("/login-as-administrator");
         setIsAdministrator(false);
-      } else {
+      }
+      else if(response.status === 409){
+        alert('User already exited!!')
+      }
+      else {
         const errorData = await response.json();
         console.error("Registration failed:", errorData);
       }
     } catch (error) {
       console.error("Fetch failed:", error);
     }
-  };
+  }; 
 
   const handleInput = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -63,6 +65,7 @@ const Administrator = ({ setIsAdministrator, setIsTeamMember }) => {
             <option value="Host">Host</option>
             <option value="Member">Member</option>
           </select>
+          <input type="text" placeholder="Enter your department" name="department" value={formData.department} onChange={handleInput} required />
         </div>
         <button className="handleSubmit" type="submit">Sign Up</button>
         <p>Already have an account? <span onClick={() => { setIsAdministrator(false); setIsTeamMember(true); }}>Click here</span></p>

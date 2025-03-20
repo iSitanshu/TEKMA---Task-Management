@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import {UserContext} from '../context/UserContext';
 
 const Temp = () => {
+  console.log("Kehdo",user)
     const navigate = useNavigate();
     const registerpage = () => {
         navigate('/login-as-administrator');
@@ -9,6 +11,7 @@ const Temp = () => {
   return (
     <div>
         <button onClick={() => registerpage()}>Temp</button>
+
     </div>
   )
 }
